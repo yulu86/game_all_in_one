@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:game_all_in_one/src/game_controller.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
 
 /// 酷栗宝
@@ -10,7 +11,7 @@ class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {
 
   @override
   Future<void>? onLoad() async {
-    final marioImage = game.images.fromCache('mario_sprites.gif');
+    final marioImage = game.images.fromCache(marioGameImage);
     animation = getAnimation(
       image: marioImage,
       size: Vector2.all(16),
