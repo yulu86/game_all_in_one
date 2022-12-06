@@ -19,7 +19,8 @@ class Mario extends SpriteAnimationComponent with HasGameRef<MarioGame> {
       ],
       stepTime: 0.16,
     );
-    position = Vector2(240, 150);
+    position = Vector2(320, 150);
+    flipHorizontally();
     add(
       MoveEffect.by(
         Vector2(-2 * size.x, 0),
