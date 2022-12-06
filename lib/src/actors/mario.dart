@@ -17,6 +17,7 @@ class Mario extends SpriteAnimationComponent with HasGameRef<MarioGame> {
         Vector2(88, 698),
         Vector2(105, 698),
       ],
+      stepTime: 0.16,
     );
     position = Vector2(240, 150);
     add(
