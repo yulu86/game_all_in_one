@@ -4,6 +4,7 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:game_all_in_one/src/actors/goomba.dart';
 import 'package:game_all_in_one/src/game_controller.dart';
+import 'package:game_all_in_one/src/objects/ground_brick.dart';
 
 class MarioGame extends FlameGame {
   @override
@@ -14,5 +15,10 @@ class MarioGame extends FlameGame {
     await Flame.images.load(marioGameImage);
 
     add(Goomba());
+    for (int i = 0; i < 100; i++) {
+      add(GroundBrick(
+        position: Vector2(32.0 * i, 182.0),
+      ));
+    }
   }
 }
