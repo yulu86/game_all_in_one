@@ -11,11 +11,10 @@ class GroundBrick extends SpriteComponent with HasGameRef<MarioGame> {
 
   @override
   Future<void>? onLoad() async {
-    final marioImage = game.images.fromCache(marioGameImage);
-    sprite = Sprite(
-      marioImage,
-      srcSize: Vector2.all(16),
-      srcPosition: Vector2(373, 124),
+    sprite = getSprite(
+      image: game.gameSpriteImage,
+      size: Vector2.all(16),
+      position: Vector2(373, 124),
     );
   }
 }

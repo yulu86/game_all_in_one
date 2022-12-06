@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:game_all_in_one/src/game_controller.dart';
@@ -11,9 +9,8 @@ class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {
 
   @override
   Future<void>? onLoad() async {
-    final marioImage = game.images.fromCache(marioGameImage);
     animation = getAnimation(
-      image: marioImage,
+      image: game.gameSpriteImage,
       size: Vector2.all(16),
       frames: [
         Vector2(187, 894),
@@ -37,24 +34,5 @@ class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {
   @override
   void update(double dt) {
     super.update(dt);
-  }
-
-  SpriteAnimation getAnimation({
-    required Image image,
-    required Vector2 size,
-    required List<Vector2> frames,
-    double stepTime = double.infinity,
-  }) {
-    final sprites = frames
-        .map((srcPosition) => Sprite(
-              image,
-              srcSize: size,
-              srcPosition: srcPosition,
-            ))
-        .toList();
-    return SpriteAnimation.spriteList(
-      sprites,
-      stepTime: stepTime,
-    );
   }
 }
