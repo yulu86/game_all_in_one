@@ -5,6 +5,7 @@ import 'package:flame/game.dart';
 import 'package:game_all_in_one/src/actors/goomba.dart';
 import 'package:game_all_in_one/src/actors/mario.dart';
 import 'package:game_all_in_one/src/game_controller.dart';
+import 'package:game_all_in_one/src/objects/cloud.dart';
 import 'package:game_all_in_one/src/objects/ground_brick.dart';
 import 'package:game_all_in_one/src/objects/little_grass.dart';
 import 'package:game_all_in_one/src/objects/pipe.dart';
@@ -29,6 +30,7 @@ class MarioGame extends FlameGame {
         ),
       ]);
     }
+    add(Cloud());
     add(LittleGrass());
     add(Pipe());
     add(Goomba());
