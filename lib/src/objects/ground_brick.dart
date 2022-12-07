@@ -7,6 +7,7 @@ class GroundBrick extends SpriteComponent with HasGameRef<MarioGame> {
       : super(
           size: Vector2.all(32),
           position: position,
+          anchor: Anchor.bottomLeft,
         );
 
   @override

@@ -4,7 +4,7 @@ import 'package:game_all_in_one/src/game_controller.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
 
 class Mario extends SpriteAnimationComponent with HasGameRef<MarioGame> {
-  Mario() : super(size: Vector2.all(32));
+  Mario() : super(size: Vector2.all(32), anchor: Anchor.bottomLeft);
 
   @override
   Future<void>? onLoad() async {
@@ -19,7 +19,7 @@ class Mario extends SpriteAnimationComponent with HasGameRef<MarioGame> {
       ],
       stepTime: 0.16,
     );
-    position = Vector2(320, 150);
+    position = Vector2(320, game.size.y - 32);
     flipHorizontally();
     add(
       MoveEffect.by(

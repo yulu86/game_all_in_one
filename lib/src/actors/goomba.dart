@@ -5,7 +5,11 @@ import 'package:game_all_in_one/src/mario_game.dart';
 
 /// 酷栗宝
 class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {
-  Goomba() : super(size: Vector2.all(32));
+  Goomba()
+      : super(
+          size: Vector2.all(32),
+          anchor: Anchor.bottomLeft,
+        );
 
   @override
   Future<void>? onLoad() async {
@@ -18,7 +22,7 @@ class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {
       ],
       stepTime: 0.16,
     );
-    position = Vector2(150, 150);
+    position = Vector2(150, game.size.y - 32);
     add(
       MoveEffect.by(
         Vector2(-2 * size.x, 0),

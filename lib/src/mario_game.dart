@@ -21,7 +21,7 @@ class MarioGame extends FlameGame {
 
     for (int i = 0; i < 100; i++) {
       add(GroundBrick(
-        position: Vector2(32.0 * i, 182.0),
+        position: Vector2(32.0 * i, size.y),
       ));
     }
     add(LittleGrass());
