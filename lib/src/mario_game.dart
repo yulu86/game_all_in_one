@@ -20,9 +20,14 @@ class MarioGame extends FlameGame {
     gameSpriteImage = await Flame.images.load(marioGameImage);
 
     for (int i = 0; i < 100; i++) {
-      add(GroundBrick(
-        position: Vector2(32.0 * i, size.y),
-      ));
+      addAll([
+        GroundBrick(
+          position: Vector2(32.0 * i, size.y),
+        ),
+        GroundBrick(
+          position: Vector2(32.0 * i, size.y - 32),
+        ),
+      ]);
     }
     add(LittleGrass());
     add(Pipe());

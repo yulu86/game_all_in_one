@@ -12,6 +12,6 @@ class LittleGrass extends SpriteComponent with HasGameRef<MarioGame> {
       size: Vector2(48, 19),
       position: Vector2(48, 176),
     );
-    position = Vector2(160, game.size.y - 32);
+    position = Vector2(160, game.size.y - 64);
   }
 }

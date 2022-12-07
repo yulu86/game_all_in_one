@@ -22,7 +22,7 @@ class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {
       ],
       stepTime: 0.16,
     );
-    position = Vector2(150, game.size.y - 32);
+    position = Vector2(150, game.size.y - 64);
     add(
       MoveEffect.by(
         Vector2(-2 * size.x, 0),
