@@ -12,6 +12,6 @@ class Pipe extends SpriteComponent with HasGameRef<MarioGame> {
       size: Vector2(32, 32),
       position: Vector2(614, 46),
     );
-    position = Vector2(340, game.size.y - 64);
+    position = Vector2(320, game.size.y - 64);
   }
 }

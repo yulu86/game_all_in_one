@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:game_all_in_one/src/actors/goomba.dart';
@@ -10,7 +11,9 @@ import 'package:game_all_in_one/src/objects/ground_brick.dart';
 import 'package:game_all_in_one/src/objects/little_grass.dart';
 import 'package:game_all_in_one/src/objects/pipe.dart';
 
-class MarioGame extends FlameGame {
+class MarioGame extends FlameGame with HasKeyboardHandlerComponents {
+  double objectSpeed = 0;
+
   @override
   Color backgroundColor() => const Color(0xFF7B93F1);
 
