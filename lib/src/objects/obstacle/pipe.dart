@@ -1,23 +1,11 @@
 import 'package:flame/components.dart';
-import 'package:game_all_in_one/src/mario_game.dart';
-import 'package:game_all_in_one/src/utils/game_const.dart';
-import 'package:game_all_in_one/src/utils/sprite_utils.dart';
+import 'package:game_all_in_one/src/objects/game_object.dart';
 
-class Pipe extends SpriteComponent with HasGameRef<MarioGame> {
+class Pipe extends GameObject {
   Pipe({required Vector2 position})
       : super(
           position: position,
-          anchor: Anchor.bottomLeft,
+          srcSize: Vector2.all(32),
+          srcPosition: Vector2(614, 46),
         );
-
-  @override
-  Future<void>? onLoad() async {
-    final srcSize = Vector2(32, 32);
-    sprite = getSprite(
-      image: game.gameSpriteImage,
-      size: srcSize,
-      position: Vector2(614, 46),
-    );
-    size = srcSize * gameScale;
-  }
 }
