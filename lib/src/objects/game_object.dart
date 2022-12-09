@@ -19,6 +19,8 @@ class GameObject extends SpriteComponent with HasGameRef<MarioGame> {
   late Vector2 _srcSize;
   late Vector2 _srcPosition;
 
+  Vector2 velocity = Vector2.zero();
+
   @override
   Future<void>? onLoad() async {
     sprite = getSprite(
@@ -27,5 +29,13 @@ class GameObject extends SpriteComponent with HasGameRef<MarioGame> {
       position: _srcPosition,
     );
     size = _srcSize * gameScale;
+  }
+
+  @override
+  void update(double dt) {
+    velocity.x = game.objectSpeed;
+    position += velocity;
+
+    super.update(dt);
   }
 }

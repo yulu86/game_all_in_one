@@ -39,7 +39,7 @@ class Mario extends SpriteAnimationComponent
     // Prevent ember from going beyond half screen.
     if (position.x + 64 >= game.size.x / 2 && horizontalDirection > 0) {
       velocity.x = 0;
-      game.objectSpeed = -moveSpeed;
+      game.objectSpeed = -moveSpeed / 20;
     }
 
     // Adjust ember position.
