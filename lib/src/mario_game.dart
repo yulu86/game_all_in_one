@@ -3,13 +3,13 @@ import 'dart:ui';
 import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import 'package:game_all_in_one/src/actors/goomba.dart';
-import 'package:game_all_in_one/src/actors/mario.dart';
+import 'package:game_all_in_one/src/actors/enemy/goomba.dart';
+import 'package:game_all_in_one/src/actors/player/mario.dart';
 import 'package:game_all_in_one/src/game_controller.dart';
-import 'package:game_all_in_one/src/objects/cloud.dart';
-import 'package:game_all_in_one/src/objects/ground_brick.dart';
-import 'package:game_all_in_one/src/objects/little_grass.dart';
-import 'package:game_all_in_one/src/objects/pipe.dart';
+import 'package:game_all_in_one/src/objects/background/cloud.dart';
+import 'package:game_all_in_one/src/objects/obstacle/ground_brick.dart';
+import 'package:game_all_in_one/src/objects/background/little_grass.dart';
+import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
 
 class MarioGame extends FlameGame with HasKeyboardHandlerComponents {
   double objectSpeed = 0;
