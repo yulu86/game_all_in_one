@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:game_all_in_one/src/game_controller.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
+import 'package:game_all_in_one/src/utils/sprite_utils.dart';
 
 /// 酷栗宝
 class Goomba extends SpriteAnimationComponent with HasGameRef<MarioGame> {

@@ -2,12 +2,6 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 
-/// 精灵图
-const marioGameImage = 'mario_sprites.gif';
-
-/// 单元大小
-const unitSize = 32.0;
-
 /// 获取精灵图
 Sprite getSprite({
   required Image image,
