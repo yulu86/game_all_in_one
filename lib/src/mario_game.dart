@@ -34,9 +34,9 @@ class MarioGame extends FlameGame with HasKeyboardHandlerComponents {
         ),
       ]);
     }
-    add(Cloud());
-    add(LittleGrass());
-    add(Pipe());
+    add(Cloud(position: Vector2(160, 350)));
+    add(LittleGrass(position: Vector2(160, size.y - 64)));
+    add(Pipe(position: Vector2(320, size.y - 64)));
     add(Goomba());
     add(Mario());
   }
