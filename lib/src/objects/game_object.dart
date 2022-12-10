@@ -4,11 +4,10 @@ import 'package:game_all_in_one/src/utils/game_const.dart';
 
 class GameObject extends SpriteComponent with HasGameRef<MarioGame> {
   GameObject({
-    required Vector2 position,
+    super.position,
     required Vector2 srcSize,
     required Vector2 srcPosition,
   }) : super(
-          position: position,
           anchor: Anchor.bottomLeft,
         ) {
     _srcSize = srcSize;
