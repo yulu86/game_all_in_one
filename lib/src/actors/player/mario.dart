@@ -18,12 +18,12 @@ class Mario extends SpriteAnimationComponent
       image: game.gameSpriteImage,
       size: Vector2.all(16),
       frames: [
-        Vector2(53, 698),
-        Vector2(71, 698),
-        Vector2(88, 698),
-        Vector2(105, 698),
+        // Vector2(66, 508),
+        Vector2(84, 507),
+        Vector2(99, 508),
+        Vector2(117, 507),
       ],
-      stepTime: 0.16,
+      stepTime: 0.12,
     );
     position = Vector2(290, game.size.y - 64);
   }
@@ -39,7 +39,7 @@ class Mario extends SpriteAnimationComponent
     // Prevent ember from going beyond half screen.
     if (position.x + 64 >= game.size.x / 2 && horizontalDirection > 0) {
       velocity.x = 0;
-      game.objectSpeed = -moveSpeed / 20;
+      game.objectSpeed = -moveSpeed / 50;
     }
 
     // Adjust ember position.
