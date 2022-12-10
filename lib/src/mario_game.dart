@@ -12,6 +12,7 @@ import 'package:game_all_in_one/src/objects/background/object_size.dart';
 import 'package:game_all_in_one/src/objects/obstacle/ground_brick.dart';
 import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
 import 'package:game_all_in_one/src/segment/segment.dart';
+import 'package:game_all_in_one/src/segment/segment_manager.dart';
 
 import 'utils/game_const.dart';
 
@@ -50,6 +51,13 @@ class MarioGame extends FlameGame with HasKeyboardHandlerComponents {
     // add(Pipe(position: Vector2(320, size.y - 64)));
     // add(Goomba());
     // add(Mario());
-    add(Segment(index: 1));
+    // add(Segment(index: 1,blocks: ));
+    _loadSegments();
+  }
+
+  void _loadSegments() {
+    for (final segment in segments) {
+      add(segment);
+    }
   }
 }
