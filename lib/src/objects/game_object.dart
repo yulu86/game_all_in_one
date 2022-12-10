@@ -1,7 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
 import 'package:game_all_in_one/src/utils/game_const.dart';
-import 'package:game_all_in_one/src/utils/sprite_utils.dart';
 
 class GameObject extends SpriteComponent with HasGameRef<MarioGame> {
   GameObject({
@@ -23,8 +22,7 @@ class GameObject extends SpriteComponent with HasGameRef<MarioGame> {
 
   @override
   Future<void>? onLoad() async {
-    sprite = getSprite(
-      image: game.gameSpriteImage,
+    sprite = _getSprite(
       size: _srcSize,
       position: _srcPosition,
     );
@@ -37,5 +35,17 @@ class GameObject extends SpriteComponent with HasGameRef<MarioGame> {
     position += velocity;
 
     super.update(dt);
+  }
+
+  // 获取精灵图
+  Sprite _getSprite({
+    required Vector2 size,
+    required Vector2 position,
+  }) {
+    return Sprite(
+      game.gameSpriteImage,
+      srcSize: size,
+      srcPosition: position,
+    );
   }
 }
