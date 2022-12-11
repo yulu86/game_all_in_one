@@ -27,7 +27,7 @@ const renderHitboxShape = false;
 double gameScale = 4.5;
 
 void setGameScale(double width) {
-  gameScale = width / (17 * 16 * 2.5);
+  gameScale = (width / (17 * 16 * 2.5)).clamp(2, 4.5);
 }
 
 /// 单元大小
