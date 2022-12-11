@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
 import 'package:game_all_in_one/src/segment/segment.dart';
@@ -51,6 +52,18 @@ class StatefulGameObject<T> extends SpriteAnimationGroupComponent<T>
       );
     });
     return animations;
+  }
+
+  void addHitbox() {
+    add(
+      RectangleHitbox.relative(
+        Vector2(1, 1),
+        position: position,
+        parentSize: size,
+      )
+        ..paint = hitboxPaint
+        ..renderShape = renderHitboxShape,
+    );
   }
 }
 

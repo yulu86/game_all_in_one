@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:flame/palette.dart';
+
 /// 精灵图
 const marioGameImage = 'mario_sprites.gif';
 
@@ -18,3 +22,6 @@ const int rightDirection = 1;
 
 /// 物品水平移动速度
 const double itemHorizontalSpeed = 1;
+
+final hitboxPaint = BasicPalette.red.paint()..style = PaintingStyle.stroke;
+const renderHitboxShape = true;

@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/objects/animation_game_object.dart';
 import 'package:game_all_in_one/src/objects/stateful_game_object.dart';
@@ -16,4 +17,16 @@ class StaticGameObject extends AnimationGameObject {
           ),
           size: srcSize,
         );
+
+  void addHitbox() {
+    add(
+      RectangleHitbox.relative(
+        Vector2(1, 1),
+        position: position,
+        parentSize: size,
+      )
+        ..paint = hitboxPaint
+        ..renderShape = renderHitboxShape,
+    );
+  }
 }

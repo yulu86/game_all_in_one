@@ -12,6 +12,12 @@ class Pipe extends StaticGameObject {
           srcPosition: Vector2(614, 46),
         );
 
+  @override
+  Future<void>? onLoad() async {
+    addHitbox();
+    super.onLoad();
+  }
+
   static Vector2 _getSrcSize(ObjectSize objectSize) {
     return Vector2.all(32);
     switch (objectSize) {
