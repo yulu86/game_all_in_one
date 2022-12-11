@@ -4,6 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:game_all_in_one/src/objects/actors/player/mario.dart';
 import 'package:game_all_in_one/src/segment/segment_manager.dart';
 
 import 'utils/game_const.dart';
@@ -27,6 +28,8 @@ class MarioGame extends FlameGame
 
     add(ScreenHitbox());
     _loadSegments();
+
+    add(Mario(gridPosition: Vector2(2, 2)));
   }
 
   void _loadSegments() {
