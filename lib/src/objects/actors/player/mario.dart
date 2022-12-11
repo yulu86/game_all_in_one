@@ -17,7 +17,10 @@ class Mario extends SpriteAnimationGroupComponent<int>
         );
 
   final Vector2 gridPosition;
+  final speed = 500.0;
 
+  final Vector2 _velocity = Vector2.zero();
+  int _currentDirection = rightDirection;
   PlayerState _playerState = PlayerState.waiting;
   PlayerMode _playerMode = PlayerMode.normal;
 
@@ -34,6 +37,7 @@ class Mario extends SpriteAnimationGroupComponent<int>
 
   @override
   void update(double dt) {
+    _updatePosition(dt);
     _removeWhenOutOfEdge();
     super.update(dt);
   }
@@ -41,8 +45,9 @@ class Mario extends SpriteAnimationGroupComponent<int>
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Goomba) {
-      current =
-          getPlayerStatus(_playerState = PlayerState.crashed, _playerMode);
+      if (_playerState != PlayerState.crashed) {
+        _crash();
+      }
     }
     super.onCollision(intersectionPoints, other);
   }
@@ -87,11 +92,24 @@ class Mario extends SpriteAnimationGroupComponent<int>
     );
   }
 
+  void _crash() {
+    current = getPlayerStatus(_playerState = PlayerState.crashed, _playerMode);
+    _velocity.x = 0;
+    _velocity.y = -gravity * 10;
+  }
+
   void _removeWhenOutOfEdge() {
     if ((absolutePosition.x + size.x) <= 0 ||
         (absolutePosition.y - size.y) >= game.size.y) {
       removeFromParent();
     }
+  }
+
+  void _updatePosition(double dt) {
+    if (_playerState == PlayerState.crashed) {
+      _velocity.y += gravity;
+    }
+    position += _velocity * dt;
   }
 
   SpriteAnimation _getAnimation({
