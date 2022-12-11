@@ -1,8 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/objects/background/object_size.dart';
-import 'package:game_all_in_one/src/objects/game_object.dart';
+import 'package:game_all_in_one/src/objects/static_game_object.dart';
 
-class Pipe extends GameObject {
+class Pipe extends StaticGameObject {
   Pipe({
     super.position,
     super.gridPosition,
