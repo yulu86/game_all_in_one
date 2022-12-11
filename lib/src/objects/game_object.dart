@@ -22,8 +22,6 @@ class GameObject extends SpriteComponent
   late Vector2 _srcPosition;
   Vector2? gridPosition;
 
-  Vector2 velocity = Vector2.zero();
-
   @override
   Future<void>? onLoad() async {
     sprite = _getSprite(
@@ -37,14 +35,6 @@ class GameObject extends SpriteComponent
         parent.size.y - unitSize * gridPosition!.y,
       );
     }
-  }
-
-  @override
-  void update(double dt) {
-    velocity.x = game.objectSpeed;
-    position += velocity;
-
-    super.update(dt);
   }
 
   // 获取精灵图

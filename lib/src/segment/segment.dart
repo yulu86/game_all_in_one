@@ -20,12 +20,24 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
         );
 
   final int index;
+  final Vector2 velocity = Vector2.zero();
 
   @override
   Future<void>? onLoad() {
+    // 设置位置
     _setupPosition();
+
+    // 加载block
     _loadBlocks();
     return super.onLoad();
+  }
+
+  @override
+  void update(double dt) {
+    // 水平滚动
+    _scroll();
+
+    super.update(dt);
   }
 
   List<SegmentBlock> getBlocks();
@@ -45,6 +57,11 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
         blockType: GroundBrick,
       ),
     ).toList();
+  }
+
+  void _scroll() {
+    velocity.x = game.objectSpeed;
+    position += velocity;
   }
 
   void _setupPosition() {
