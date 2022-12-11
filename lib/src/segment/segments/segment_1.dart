@@ -3,6 +3,7 @@ import 'package:game_all_in_one/src/objects/background/cloud.dart';
 import 'package:game_all_in_one/src/objects/background/hill.dart';
 import 'package:game_all_in_one/src/objects/background/object_size.dart';
 import 'package:game_all_in_one/src/objects/items/flipping_coin.dart';
+import 'package:game_all_in_one/src/objects/items/growup_mushroom.dart';
 import 'package:game_all_in_one/src/objects/obstacle/brick.dart';
 import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
 import 'package:game_all_in_one/src/objects/obstacle/qustion_brick.dart';
@@ -63,6 +64,7 @@ class Segment1 extends Segment {
       SegmentBlock(
         gridPosition: Vector2(7, 5),
         blockType: QuestionBrick,
+        item: GrowUpMushroom,
       ),
       SegmentBlock(
         gridPosition: Vector2(8, 5),
@@ -71,6 +73,7 @@ class Segment1 extends Segment {
       SegmentBlock(
         gridPosition: Vector2(6, 7),
         blockType: QuestionBrick,
+        item: FlippingCoin,
       ),
       SegmentBlock(
         gridPosition: Vector2(11, 2),
