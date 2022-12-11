@@ -16,7 +16,7 @@ class MarioGame extends FlameGame with HasKeyboardHandlerComponents {
   late Image gameSpriteImage;
 
   @override
-  bool get debugMode => true;
+  bool get debugMode => false;
 
   @override
   Future<void>? onLoad() async {
