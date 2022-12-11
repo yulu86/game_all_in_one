@@ -31,4 +31,10 @@ class QuestionBrick extends StatefulGameObject<QuestionBrickState> {
         );
 
   final Type? item;
+
+  @override
+  Future<void>? onLoad() {
+    addHitbox();
+    return super.onLoad();
+  }
 }

@@ -7,4 +7,10 @@ class GroundBrick extends StaticGameObject {
           srcSize: Vector2.all(16),
           srcPosition: Vector2(373, 124),
         );
+
+  @override
+  Future<void>? onLoad() async {
+    addHitbox();
+    return super.onLoad();
+  }
 }

@@ -31,6 +31,7 @@ class FlippingCoin extends AnimationGameObject {
   Future<void>? onLoad() {
     _initPositionY = position.y;
     _jumpVelocity = initialJumpVelocity;
+    addHitbox();
     return super.onLoad();
   }
 

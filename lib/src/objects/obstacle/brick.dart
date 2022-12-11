@@ -18,4 +18,10 @@ class Brick extends StatefulGameObject<BrickState> {
           initialState: BrickState.normal,
           size: Vector2.all(16),
         );
+
+  @override
+  Future<void>? onLoad() async {
+    addHitbox();
+    return super.onLoad();
+  }
 }

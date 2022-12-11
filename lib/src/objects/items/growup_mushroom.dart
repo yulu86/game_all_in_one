@@ -9,4 +9,10 @@ class GrowUpMushroom extends StaticGameObject {
           srcSize: Vector2.all(16),
           srcPosition: Vector2(71, 43),
         );
+
+  @override
+  Future<void>? onLoad() async {
+    addHitbox();
+    return super.onLoad();
+  }
 }
