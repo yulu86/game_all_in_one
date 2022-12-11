@@ -30,6 +30,12 @@ class AnimationGameObject extends SpriteAnimationComponent
     _setupPosition();
   }
 
+  @override
+  void update(double dt) {
+    _removeWhenOutOfEdge();
+    super.update(dt);
+  }
+
   void _setupAnimations() {
     animation = spriteAnimation.getAnimation(game.gameSpriteImage);
   }
@@ -43,13 +49,21 @@ class AnimationGameObject extends SpriteAnimationComponent
     }
   }
 
-  void addHitbox() {
+  void _removeWhenOutOfEdge() {
+    if ((absolutePosition.x + size.x) <= 0 ||
+        (absolutePosition.y - size.y) >= game.size.y) {
+      removeFromParent();
+    }
+  }
+
+  void addHitbox({CollisionType collisionType = CollisionType.passive}) {
     add(
       RectangleHitbox.relative(
         Vector2(1, 1),
         position: position,
         parentSize: size,
       )
+        ..collisionType = collisionType
         ..paint = hitboxPaint
         ..renderShape = renderHitboxShape,
     );

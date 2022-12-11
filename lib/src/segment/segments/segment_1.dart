@@ -90,6 +90,10 @@ class Segment1 extends Segment {
       SegmentBlock(
         gridPosition: Vector2(6, 2),
         blockType: Goomba,
+      ),
+      SegmentBlock(
+        gridPosition: Vector2(11, 4),
+        blockType: Goomba,
       )
     ];
   }

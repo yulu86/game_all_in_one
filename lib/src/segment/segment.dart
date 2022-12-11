@@ -39,6 +39,7 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
   void update(double dt) {
     // 水平滚动
     _scroll();
+    _removeWhenOutOfEdge();
 
     super.update(dt);
   }
@@ -65,6 +66,13 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
   void _scroll() {
     velocity.x = game.objectSpeed;
     position += velocity;
+  }
+
+  void _removeWhenOutOfEdge() {
+    if ((absolutePosition.x + size.x) <= 0 ||
+        (absolutePosition.y - size.y) >= game.size.y) {
+      removeFromParent();
+    }
   }
 
   void _setupPosition() {

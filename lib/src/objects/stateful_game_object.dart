@@ -29,6 +29,12 @@ class StatefulGameObject<T> extends SpriteAnimationGroupComponent<T>
     _setupPosition();
   }
 
+  @override
+  void update(double dt) {
+    _removeWhenOutOfEdge();
+    super.update(dt);
+  }
+
   void _setupPosition() {
     if (gridPosition != null) {
       position = Vector2(
@@ -54,16 +60,24 @@ class StatefulGameObject<T> extends SpriteAnimationGroupComponent<T>
     return animations;
   }
 
-  void addHitbox() {
+  void addHitbox({CollisionType collisionType = CollisionType.passive}) {
     add(
       RectangleHitbox.relative(
         Vector2(1, 1),
         position: position,
         parentSize: size,
       )
+        ..collisionType = collisionType
         ..paint = hitboxPaint
         ..renderShape = renderHitboxShape,
     );
+  }
+
+  void _removeWhenOutOfEdge() {
+    if ((absolutePosition.x + size.x) <= 0 ||
+        (absolutePosition.y - size.y) >= game.size.y) {
+      removeFromParent();
+    }
   }
 }
 

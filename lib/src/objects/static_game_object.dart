@@ -18,15 +18,29 @@ class StaticGameObject extends AnimationGameObject {
           size: srcSize,
         );
 
-  void addHitbox() {
+  void addHitbox({CollisionType collisionType = CollisionType.passive}) {
     add(
       RectangleHitbox.relative(
         Vector2(1, 1),
         position: position,
         parentSize: size,
       )
+        ..collisionType = collisionType
         ..paint = hitboxPaint
         ..renderShape = renderHitboxShape,
     );
+  }
+
+  @override
+  void update(double dt) {
+    _removeWhenOutOfEdge();
+    super.update(dt);
+  }
+
+  void _removeWhenOutOfEdge() {
+    if ((absolutePosition.x + size.x) <= 0 ||
+        (absolutePosition.y - size.y) >= game.size.y) {
+      removeFromParent();
+    }
   }
 }

@@ -23,5 +23,8 @@ const int rightDirection = 1;
 /// 物品水平移动速度
 const double itemHorizontalSpeed = 1;
 
+/// 碰撞检测画笔
 final hitboxPaint = BasicPalette.yellow.paint()..style = PaintingStyle.stroke;
+
+/// 是否渲染碰撞检测形状
 const renderHitboxShape = true;

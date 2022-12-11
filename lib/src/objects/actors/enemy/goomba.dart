@@ -1,6 +1,10 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/objects/animation_game_object.dart';
+import 'package:game_all_in_one/src/objects/obstacle/brick.dart';
+import 'package:game_all_in_one/src/objects/obstacle/ground_brick.dart';
+import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
+import 'package:game_all_in_one/src/objects/obstacle/qustion_brick.dart';
 import 'package:game_all_in_one/src/objects/stateful_game_object.dart';
 import 'package:game_all_in_one/src/utils/game_const.dart';
 
@@ -22,12 +26,13 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
         );
 
   final velocity = Vector2.zero();
+  final Vector2 fromAbove = Vector2(0, -1);
 
   int _currentDirection = rightDirection;
 
   @override
   Future<void>? onLoad() async {
-    addHitbox();
+    addHitbox(collisionType: CollisionType.active);
     _setupSpeed();
     super.onLoad();
   }
@@ -41,14 +46,59 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
   }
 
   @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollisionStart(intersectionPoints, other);
+    print(
+        'onCollisionStart ====== intersectionPoints=${intersectionPoints}, other=${other}');
+    if (velocity.y != 0) {
+      velocity.y = 0;
+    }
+  }
+
+  @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
-    if (other is ScreenHitbox) {
-      return;
-    }
+    print(
+        'onCollision ====== intersectionPoints=${intersectionPoints}, other=${other}');
 
-    _currentDirection *= -1;
-    _setupSpeed();
+    // if (other is ScreenHitbox) {
+    //   return;
+    // }
+    //
+    // if (other is GroundBrick || other is Brick) {
+    //   // if (intersectionPoints.length == 2) {
+    //   //   final mid = (intersectionPoints.elementAt(0) +
+    //   //           intersectionPoints.elementAt(1)) /
+    //   //       2;
+    //   //   final collisionNormal = absoluteCenter - mid;
+    //   //   final separationDistance = (size.x / 2) - collisionNormal.length;
+    //   //   collisionNormal.normalize();
+    //   //
+    //   //   if (fromAbove.dot(collisionNormal) > 0.9) {
+    //   //     isOnGround = true;
+    //   //   }
+    //   //
+    //   //   position += collisionNormal.scaled(separationDistance);
+    //   return;
+    // }
+    //
+    // if (other is Pipe) {
+    //   if (intersectionPoints.length == 2) {
+    //     print(intersectionPoints);
+    //   }
+    // }
+    // return;
+
+    // _currentDirection *= -1;
+    // _setupSpeed();
+  }
+
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    super.onCollisionEnd(other);
+    print('onCollisionEnd ====== other=${other}');
+    velocity.y = gravity;
   }
 
   void _setupSpeed() {
@@ -56,11 +106,15 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
   }
 
   void _move() {
+    if (velocity.y != 0) {
+      velocity.y += gravity;
+    }
     position += velocity;
   }
 
   void _removeWhenOutOfEdge() {
-    if ((absolutePosition.x + size.x) <= 0) {
+    if ((absolutePosition.x + size.x) <= 0 ||
+        (absolutePosition.y - size.y) >= game.size.y) {
       removeFromParent();
     }
   }
