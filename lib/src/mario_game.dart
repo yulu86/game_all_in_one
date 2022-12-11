@@ -23,6 +23,8 @@ class MarioGame extends FlameGame
   @override
   Future<void>? onLoad() async {
     gameSpriteImage = await Flame.images.load(marioGameImage);
+    setGameScale(size.x);
+
     add(ScreenHitbox());
     _loadSegments();
   }
