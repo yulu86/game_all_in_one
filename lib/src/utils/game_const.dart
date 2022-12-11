@@ -27,4 +27,4 @@ const double itemHorizontalSpeed = 100;
 final hitboxPaint = BasicPalette.yellow.paint()..style = PaintingStyle.stroke;
 
 /// 是否渲染碰撞检测形状
-const renderHitboxShape = true;
+const renderHitboxShape = false;

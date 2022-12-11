@@ -61,11 +61,13 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
+    if (other is ScreenHitbox) {
+      return;
+    }
+
     if (other is Pipe) {
-      if (velocity.y > 0) {
-        _currentDirection *= -1;
-        _setupSpeed();
-      }
+      _currentDirection *= -1;
+      _setupSpeed();
     }
   }
 
