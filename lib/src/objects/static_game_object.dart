@@ -14,6 +14,6 @@ class StaticGameObject extends AnimationGameObject {
             size: srcSize,
             frames: [srcPosition],
           ),
-          size: srcSize * gameScale,
+          size: srcSize,
         );
 }

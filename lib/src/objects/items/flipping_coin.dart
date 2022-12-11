@@ -18,7 +18,7 @@ class FlippingCoin extends AnimationGameObject {
             ],
             stepTime: 0.12,
           ),
-          size: Vector2(14, 14) * gameScale,
+          size: Vector2(14, 14),
         );
 
   final double initialJumpVelocity = -15.0;

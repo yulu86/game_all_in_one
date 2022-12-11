@@ -8,10 +8,13 @@ class AnimationGameObject extends SpriteAnimationComponent
     with HasGameRef<MarioGame>, ParentIsA<Segment> {
   AnimationGameObject({
     required this.spriteAnimation,
-    required super.size,
+    required Vector2 size,
     this.gridPosition,
     super.position,
-  }) : super(anchor: Anchor.bottomLeft);
+  }) : super(
+          anchor: Anchor.bottomLeft,
+          size: size * gameScale,
+        );
 
   final GameObjectSpriteAnimation spriteAnimation;
 

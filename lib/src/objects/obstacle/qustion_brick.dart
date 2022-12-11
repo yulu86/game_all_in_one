@@ -1,6 +1,5 @@
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/objects/stateful_game_object.dart';
-import 'package:game_all_in_one/src/utils/game_const.dart';
 
 enum QuestionBrickState {
   unused,
@@ -28,7 +27,7 @@ class QuestionBrick extends StatefulGameObject<QuestionBrickState> {
             ),
           },
           initialState: QuestionBrickState.unused,
-          size: Vector2.all(16) * gameScale,
+          size: Vector2.all(16),
         );
 
   final Type? item;

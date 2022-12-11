@@ -10,10 +10,10 @@ class StatefulGameObject<T> extends SpriteAnimationGroupComponent<T>
   StatefulGameObject({
     required this.states,
     required this.initialState,
-    required super.size,
+    required Vector2 size,
     this.gridPosition,
     super.position,
-  });
+  }) : super(size: size * gameScale);
 
   final Map<T, GameObjectSpriteAnimation> states;
   final T initialState;

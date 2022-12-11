@@ -1,6 +1,5 @@
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/objects/stateful_game_object.dart';
-import 'package:game_all_in_one/src/utils/game_const.dart';
 
 enum BrickState {
   normal,
@@ -17,6 +16,6 @@ class Brick extends StatefulGameObject<BrickState> {
             ),
           },
           initialState: BrickState.normal,
-          size: Vector2.all(16) * gameScale,
+          size: Vector2.all(16),
         );
 }

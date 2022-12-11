@@ -18,6 +18,7 @@ class Segment1 extends Segment {
     final blocks = buildGroundBricks(17);
     blocks.addAll(_buildBackgrounds());
     blocks.addAll(_buildObstacles());
+    blocks.addAll(_buildEnemies());
     return blocks;
   }
 
@@ -81,5 +82,9 @@ class Segment1 extends Segment {
         objectSize: ObjectSize.small,
       ),
     ];
+  }
+
+  List<SegmentBlock> _buildEnemies() {
+    return [];
   }
 }
