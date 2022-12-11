@@ -2,6 +2,7 @@ import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/objects/background/cloud.dart';
 import 'package:game_all_in_one/src/objects/background/hill.dart';
 import 'package:game_all_in_one/src/objects/background/object_size.dart';
+import 'package:game_all_in_one/src/objects/obstacle/brick.dart';
 import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
 import 'package:game_all_in_one/src/segment/segment.dart';
 import 'package:game_all_in_one/src/segment/segment_block.dart';
@@ -43,6 +44,18 @@ class Segment1 extends Segment {
         gridPosition: Vector2(11, 2),
         blockType: Pipe,
         objectSize: ObjectSize.small,
+      ),
+      SegmentBlock(
+        gridPosition: Vector2(4, 5),
+        blockType: Brick,
+      ),
+      SegmentBlock(
+        gridPosition: Vector2(6, 5),
+        blockType: Brick,
+      ),
+      SegmentBlock(
+        gridPosition: Vector2(8, 5),
+        blockType: Brick,
       ),
     ];
   }
