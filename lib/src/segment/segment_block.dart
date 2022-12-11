@@ -6,9 +6,11 @@ class SegmentBlock {
     required this.gridPosition,
     required this.blockType,
     this.objectSize,
+    this.item,
   });
 
   final Vector2 gridPosition;
   final Type blockType;
   final ObjectSize? objectSize;
+  final Type? item;
 }

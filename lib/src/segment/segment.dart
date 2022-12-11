@@ -3,6 +3,7 @@ import 'package:game_all_in_one/src/mario_game.dart';
 import 'package:game_all_in_one/src/objects/background/bush.dart';
 import 'package:game_all_in_one/src/objects/background/cloud.dart';
 import 'package:game_all_in_one/src/objects/background/hill.dart';
+import 'package:game_all_in_one/src/objects/items/flipping_coin.dart';
 import 'package:game_all_in_one/src/objects/obstacle/brick.dart';
 import 'package:game_all_in_one/src/objects/obstacle/ground_brick.dart';
 import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
@@ -114,6 +115,7 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
       case QuestionBrick:
         add(QuestionBrick(
           gridPosition: block.gridPosition,
+          item: block.item,
         ));
         break;
     }

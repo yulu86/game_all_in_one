@@ -8,8 +8,10 @@ enum QuestionBrickState {
 }
 
 class QuestionBrick extends StatefulGameObject<QuestionBrickState> {
-  QuestionBrick({super.gridPosition})
-      : super(
+  QuestionBrick({
+    super.gridPosition,
+    this.item,
+  }) : super(
           states: {
             QuestionBrickState.unused: GameObjectSpriteAnimation(
               size: Vector2.all(16),
@@ -28,4 +30,6 @@ class QuestionBrick extends StatefulGameObject<QuestionBrickState> {
           initialState: QuestionBrickState.unused,
           size: Vector2.all(16) * gameScale,
         );
+
+  final Type? item;
 }
