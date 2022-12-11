@@ -6,3 +6,6 @@ const unitSize = 32.0;
 
 /// 缩放大小
 const gameScale = 2.0;
+
+/// 重力
+const double gravity = 1;

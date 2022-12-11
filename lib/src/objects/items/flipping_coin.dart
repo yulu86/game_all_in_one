@@ -23,22 +23,21 @@ class FlippingCoin extends AnimationGameObject {
 
   final double initialJumpVelocity = -15.0;
   final velocity = Vector2.zero();
-  final speed = 500;
-  final double gravity = 1;
 
   double _jumpVelocity = 0.0;
   double _initPositionY = 0.0;
 
   @override
   Future<void>? onLoad() {
-    super.onLoad();
     _initPositionY = position.y;
-    _jumpVelocity = initialJumpVelocity - (speed / 500);
+    _jumpVelocity = initialJumpVelocity;
+    return super.onLoad();
   }
 
   @override
   void update(double dt) {
     _move();
+    _removeFallToFloor();
 
     super.update(dt);
   }
@@ -46,7 +45,9 @@ class FlippingCoin extends AnimationGameObject {
   void _move() {
     y += _jumpVelocity;
     _jumpVelocity += gravity;
+  }
 
+  void _removeFallToFloor() {
     if (y > _initPositionY) {
       removeFromParent();
     }
