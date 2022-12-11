@@ -1,5 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
+import 'package:game_all_in_one/src/objects/background/bush.dart';
+import 'package:game_all_in_one/src/objects/background/cloud.dart';
+import 'package:game_all_in_one/src/objects/background/hill.dart';
 import 'package:game_all_in_one/src/objects/obstacle/ground_brick.dart';
 import 'package:game_all_in_one/src/segment/segment_block.dart';
 import 'package:game_all_in_one/src/utils/game_const.dart';
@@ -58,6 +61,18 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
     switch (block.blockType) {
       case GroundBrick:
         add(GroundBrick(gridPosition: block.gridPosition));
+        break;
+      case Hill:
+        add(Hill(
+            gridPosition: block.gridPosition, objectSize: block.objectSize!));
+        break;
+      case Bush:
+        add(Bush(
+            gridPosition: block.gridPosition, objectSize: block.objectSize!));
+        break;
+      case Cloud:
+        add(Cloud(
+            gridPosition: block.gridPosition, objectSize: block.objectSize!));
         break;
     }
   }

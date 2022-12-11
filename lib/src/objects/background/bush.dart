@@ -5,10 +5,10 @@ import 'package:game_all_in_one/src/objects/game_object.dart';
 /// 灌木丛
 class Bush extends GameObject {
   Bush({
-    required Vector2 position,
+    super.position,
+    super.gridPosition,
     ObjectSize objectSize = ObjectSize.small,
   }) : super(
-          position: position,
           srcSize: _getSrcSize(objectSize),
           srcPosition: _getSrcPosition(objectSize),
         );

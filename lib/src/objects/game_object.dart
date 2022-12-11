@@ -33,8 +33,8 @@ class GameObject extends SpriteComponent
 
     if (gridPosition != null) {
       position = Vector2(
-        size.x * gridPosition!.x,
-        parent.size.y - size.y * gridPosition!.y,
+        unitSize * gridPosition!.x,
+        parent.size.y - unitSize * gridPosition!.y,
       );
     }
   }

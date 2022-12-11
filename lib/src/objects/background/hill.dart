@@ -5,10 +5,10 @@ import 'package:game_all_in_one/src/objects/game_object.dart';
 /// 山丘
 class Hill extends GameObject {
   Hill({
-    required Vector2 position,
+    super.position,
+    super.gridPosition,
     ObjectSize objectSize = ObjectSize.medium,
   }) : super(
-          position: position,
           srcSize: _getSrcSize(objectSize),
           srcPosition: _getSrcPosition(objectSize),
         );
