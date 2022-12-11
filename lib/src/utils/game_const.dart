@@ -12,7 +12,7 @@ const gameScale = 4.5;
 const unitSize = 16.0 * gameScale;
 
 /// 重力
-const double gravity = 1;
+const double gravity = 50;
 
 /// 向左移动
 const int leftDirection = -1;
@@ -21,7 +21,7 @@ const int leftDirection = -1;
 const int rightDirection = 1;
 
 /// 物品水平移动速度
-const double itemHorizontalSpeed = 1;
+const double itemHorizontalSpeed = 100;
 
 /// 碰撞检测画笔
 final hitboxPaint = BasicPalette.yellow.paint()..style = PaintingStyle.stroke;

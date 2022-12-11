@@ -39,7 +39,7 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
 
   @override
   void update(double dt) {
-    _move();
+    _move(dt);
     _removeWhenOutOfEdge();
 
     super.update(dt);
@@ -49,9 +49,11 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
-    print(
-        'onCollisionStart ====== intersectionPoints=${intersectionPoints}, other=${other}');
-    if (velocity.y != 0) {
+    if (other is ScreenHitbox) {
+      return;
+    }
+
+    if (velocity.y > 0) {
       velocity.y = 0;
     }
   }
@@ -59,57 +61,32 @@ class Goomba extends AnimationGameObject with CollisionCallbacks {
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
-    print(
-        'onCollision ====== intersectionPoints=${intersectionPoints}, other=${other}');
-
-    // if (other is ScreenHitbox) {
-    //   return;
-    // }
-    //
-    // if (other is GroundBrick || other is Brick) {
-    //   // if (intersectionPoints.length == 2) {
-    //   //   final mid = (intersectionPoints.elementAt(0) +
-    //   //           intersectionPoints.elementAt(1)) /
-    //   //       2;
-    //   //   final collisionNormal = absoluteCenter - mid;
-    //   //   final separationDistance = (size.x / 2) - collisionNormal.length;
-    //   //   collisionNormal.normalize();
-    //   //
-    //   //   if (fromAbove.dot(collisionNormal) > 0.9) {
-    //   //     isOnGround = true;
-    //   //   }
-    //   //
-    //   //   position += collisionNormal.scaled(separationDistance);
-    //   return;
-    // }
-    //
-    // if (other is Pipe) {
-    //   if (intersectionPoints.length == 2) {
-    //     print(intersectionPoints);
-    //   }
-    // }
-    // return;
-
-    // _currentDirection *= -1;
-    // _setupSpeed();
+    if (other is Pipe) {
+      if (velocity.y > 0) {
+        _currentDirection *= -1;
+        _setupSpeed();
+      }
+    }
   }
 
   @override
   void onCollisionEnd(PositionComponent other) {
     super.onCollisionEnd(other);
-    print('onCollisionEnd ====== other=${other}');
-    velocity.y = gravity;
+    if (!isColliding) {
+      velocity.y = gravity;
+    }
   }
 
   void _setupSpeed() {
     velocity.x = _currentDirection * itemHorizontalSpeed;
   }
 
-  void _move() {
+  void _move(double dt) {
     if (velocity.y != 0) {
       velocity.y += gravity;
     }
-    position += velocity;
+    final newPosition = velocity * dt + position;
+    position = newPosition;
   }
 
   void _removeWhenOutOfEdge() {
