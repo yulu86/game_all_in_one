@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:game_all_in_one/src/objects/actors/enemy/goomba.dart';
 import 'package:game_all_in_one/src/objects/background/cloud.dart';
 import 'package:game_all_in_one/src/objects/background/hill.dart';
 import 'package:game_all_in_one/src/objects/background/object_size.dart';
@@ -85,6 +86,11 @@ class Segment1 extends Segment {
   }
 
   List<SegmentBlock> _buildEnemies() {
-    return [];
+    return [
+      SegmentBlock(
+        gridPosition: Vector2(6, 2),
+        blockType: Goomba,
+      )
+    ];
   }
 }

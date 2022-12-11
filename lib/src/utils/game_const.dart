@@ -9,3 +9,12 @@ const gameScale = 2.0;
 
 /// 重力
 const double gravity = 1;
+
+/// 向左移动
+const int leftDirection = -1;
+
+/// 向右移动
+const int rightDirection = 1;
+
+/// 物品水平移动速度
+const double itemHorizontalSpeed = 1;
