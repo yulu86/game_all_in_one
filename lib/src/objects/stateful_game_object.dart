@@ -58,12 +58,12 @@ class GameObjectSpriteAnimation {
   GameObjectSpriteAnimation({
     required this.size,
     required this.frames,
-    stepTime = double.infinity,
+    this.stepTime = double.infinity,
   });
 
   final Vector2 size;
   final List<Vector2> frames;
-  double stepTime = double.infinity;
+  late double stepTime;
 
   SpriteAnimation getAnimation(Image image) {
     return SpriteAnimation.spriteList(

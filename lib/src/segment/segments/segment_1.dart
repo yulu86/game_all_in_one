@@ -4,6 +4,7 @@ import 'package:game_all_in_one/src/objects/background/hill.dart';
 import 'package:game_all_in_one/src/objects/background/object_size.dart';
 import 'package:game_all_in_one/src/objects/obstacle/brick.dart';
 import 'package:game_all_in_one/src/objects/obstacle/pipe.dart';
+import 'package:game_all_in_one/src/objects/obstacle/qustion_brick.dart';
 import 'package:game_all_in_one/src/segment/segment.dart';
 import 'package:game_all_in_one/src/segment/segment_block.dart';
 
@@ -50,12 +51,24 @@ class Segment1 extends Segment {
         blockType: Brick,
       ),
       SegmentBlock(
+        gridPosition: Vector2(5, 5),
+        blockType: QuestionBrick,
+      ),
+      SegmentBlock(
         gridPosition: Vector2(6, 5),
         blockType: Brick,
       ),
       SegmentBlock(
+        gridPosition: Vector2(7, 5),
+        blockType: QuestionBrick,
+      ),
+      SegmentBlock(
         gridPosition: Vector2(8, 5),
         blockType: Brick,
+      ),
+      SegmentBlock(
+        gridPosition: Vector2(6, 7),
+        blockType: QuestionBrick,
       ),
     ];
   }
