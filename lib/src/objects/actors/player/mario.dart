@@ -1,12 +1,14 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:game_all_in_one/src/mario_game.dart';
 import 'package:game_all_in_one/src/objects/actors/enemy/goomba.dart';
 import 'package:game_all_in_one/src/objects/actors/player/player_state.dart';
 import 'package:game_all_in_one/src/utils/game_const.dart';
 
 class Mario extends SpriteAnimationGroupComponent<int>
-    with HasGameRef<MarioGame>, CollisionCallbacks {
+    with HasGameRef<MarioGame>, KeyboardHandler, CollisionCallbacks {
   static final defaultSize = Vector2.all(16);
 
   Mario({
@@ -52,6 +54,27 @@ class Mario extends SpriteAnimationGroupComponent<int>
     super.onCollision(intersectionPoints, other);
   }
 
+  @override
+  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    _currentDirection = 0;
+    _currentDirection += (keysPressed.contains(LogicalKeyboardKey.keyA) ||
+            keysPressed.contains(LogicalKeyboardKey.arrowLeft))
+        ? leftDirection
+        : 0;
+    _currentDirection += (keysPressed.contains(LogicalKeyboardKey.keyD) ||
+            keysPressed.contains(LogicalKeyboardKey.arrowRight))
+        ? rightDirection
+        : 0;
+
+    if (_currentDirection != 0) {
+      current =
+          getPlayerStatus(_playerState = PlayerState.running, _playerMode);
+    }
+
+    // hasJumped = keysPressed.contains(LogicalKeyboardKey.space);
+    return true;
+  }
+
   void _setupPosition() {
     position = Vector2(
       unitSize * gridPosition.x,
@@ -75,6 +98,16 @@ class Mario extends SpriteAnimationGroupComponent<int>
       getPlayerStatus(PlayerState.crashed, PlayerMode.normal): _getAnimation(
         srcSize: defaultSize,
         frames: [Vector2(45, 508)],
+      ),
+      // running & normal
+      getPlayerStatus(PlayerState.running, PlayerMode.normal): _getAnimation(
+        srcSize: defaultSize,
+        frames: [
+          Vector2(83, 507),
+          Vector2(98, 508),
+          Vector2(117, 507),
+        ],
+        stepTime: 0.12,
       ),
     };
   }
@@ -107,7 +140,10 @@ class Mario extends SpriteAnimationGroupComponent<int>
 
   void _updatePosition(double dt) {
     if (_playerState == PlayerState.crashed) {
+      _velocity.x = 0;
       _velocity.y += gravity;
+    } else if (_playerState == PlayerState.running) {
+      _velocity.x = _currentDirection * 100;
     }
     position += _velocity * dt;
   }
