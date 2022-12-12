@@ -95,7 +95,7 @@ class Mario extends SpriteAnimationGroupComponent<int>
   void _crash() {
     current = getPlayerStatus(_playerState = PlayerState.crashed, _playerMode);
     _velocity.x = 0;
-    _velocity.y = -gravity * 10;
+    _velocity.y = -gravity * 15;
   }
 
   void _removeWhenOutOfEdge() {
