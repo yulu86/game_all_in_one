@@ -22,9 +22,14 @@ class MarioGame extends FlameGame
   bool get debugMode => false;
 
   @override
+  void onGameResize(Vector2 canvasSize) {
+    setGameScale(canvasSize.x);
+    super.onGameResize(canvasSize);
+  }
+
+  @override
   Future<void>? onLoad() async {
     gameSpriteImage = await Flame.images.load(marioGameImage);
-    setGameScale(size.x);
 
     add(ScreenHitbox());
     _loadSegments();
