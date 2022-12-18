@@ -57,7 +57,7 @@ abstract class Segment extends PositionComponent with HasGameRef<MarioGame> {
     return List.generate(
       colSize,
       (index) => SegmentBlock(
-        gridPosition: Vector2(index as double, row as double),
+        gridPosition: Vector2(index * 1.0, row * 1.0),
         blockType: GroundBrick,
       ),
     ).toList();
